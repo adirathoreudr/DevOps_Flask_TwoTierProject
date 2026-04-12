@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant | Flask App 🚀</title>
+    <title>Cloud & Platform Engineering | Flask App 🚀</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
         * {
             margin: 0;
@@ -22,138 +22,188 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
-        /* Flex container for profile + content */
         .container {
-            display: flex;
-            flex-direction: row;
-            max-width: 1050px;
+            max-width: 820px;
             width: 100%;
-            padding: 30px;
+            padding: 36px;
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             border-radius: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(85, 153, 255, 0.1);
         }
 
-        /* Left side: profile photo */
-        .profile-photo {
-            flex: 0 0 200px;
-            margin-right: 30px;
-        }
-
-        .profile-photo img {
-            width: 100%;
-            border-radius: 50%;
-            border: 3px solid #5599FF;
-            box-shadow: 0 4px 15px rgba(85, 153, 255, 0.5);
-        }
-
-        /* Right side: content */
-        .content {
-            flex: 1;
+        /* Header */
+        .header {
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(85, 153, 255, 0.2);
         }
 
         .header h1 {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 1.9rem;
+            font-weight: 700;
             color: #5599FF;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
+            letter-spacing: -0.3px;
         }
 
         .header p {
-            font-size: 1rem;
-            color: #ccc;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            color: #aac4ff;
         }
 
+        /* About section */
         .about {
-            margin-bottom: 20px;
-            padding: 10px 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 22px;
+            padding: 18px 20px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
         }
 
         .about h2 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             color: #5599FF;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .about h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 18px;
+            background: #5599FF;
+            border-radius: 4px;
         }
 
         .about p {
-            font-size: 0.95rem;
-            color: #ddd;
-            line-height: 1.5;
+            font-size: 0.92rem;
+            color: #d5e0ff;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        .about p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ML model badge */
+        .ml-badge {
+            display: inline-block;
+            background: rgba(85, 153, 255, 0.15);
+            border: 1px solid rgba(85, 153, 255, 0.35);
+            color: #88bbff;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        /* Messages area */
+        .messages-label {
+            font-size: 0.8rem;
+            color: #7a90b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .messages {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             padding: 12px;
-            background: rgba(85, 153, 255, 0.08);
-            border: 1px solid rgba(85, 153, 255, 0.2);
+            background: rgba(85, 153, 255, 0.07);
+            border: 1px solid rgba(85, 153, 255, 0.18);
             border-radius: 12px;
-            max-height: 200px;
+            min-height: 52px;
+            max-height: 180px;
             overflow-y: auto;
-            text-align: left;
         }
 
         .messages p {
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 8px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border-left: 3px solid #5599FF;
+            border-radius: 6px;
             margin-bottom: 6px;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
+            color: #dce8ff;
+        }
+
+        .messages p:last-child {
+            margin-bottom: 0;
+        }
+
+        .messages:empty::after {
+            content: 'No messages yet — be the first!';
+            color: #4d6080;
+            font-size: 0.85rem;
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+        }
+
+        /* Form */
+        .form-row {
+            display: flex;
+            gap: 10px;
         }
 
         input[type="text"] {
-            width: 100%;
-            padding: 12px;
+            flex: 1;
+            padding: 12px 16px;
             border: 1px solid rgba(85, 153, 255, 0.3);
             background: rgba(255, 255, 255, 0.05);
             color: #fff;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
-            text-align: center;
         }
 
         input[type="text"]:focus {
             border-color: #5599FF;
-            box-shadow: 0 0 12px rgba(85, 153, 255, 0.6);
+            box-shadow: 0 0 12px rgba(85, 153, 255, 0.4);
             outline: none;
         }
 
+        input[type="text"]::placeholder {
+            color: #4d6080;
+        }
+
         input[type="submit"] {
-            width: 100%;
-            padding: 12px;
+            padding: 12px 28px;
             background: #5599FF;
             color: #ffffff;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 15px;
+            font-weight: 600;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         input[type="submit"]:hover {
             background: #417ad6;
-            box-shadow: 0 0 15px rgba(85, 153, 255, 0.6);
+            box-shadow: 0 0 18px rgba(85, 153, 255, 0.5);
             transform: translateY(-2px);
         }
 
-        /* Responsive */
-        @media (max-width: 800px) {
-            .container {
+        @media (max-width: 600px) {
+            .form-row {
                 flex-direction: column;
-                align-items: center;
             }
-
-            .profile-photo {
-                margin-right: 0;
-                margin-bottom: 20px;
-                flex: 0 0 auto;
+            .header h1 {
+                font-size: 1.4rem;
             }
         }
     </style>
@@ -161,47 +211,66 @@
 
 <body>
     <div class="container">
-        <!-- Profile photo -->
-        <div class="profile-photo">
-            <img src="1.png" alt="Prashant Photo">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>Cloud Product &amp; Platform Engineering 🚀</h1>
+            <p>Two-Tier Flask Application &nbsp;|&nbsp; Flask + MySQL + Docker + CI/CD</p>
         </div>
 
-        <!-- Content -->
-        <div class="content">
-            <div class="header">
-                <h1>Prashant Gohil | DevOps Enthusiast</h1>
-                <p>Student | Aspiring Cloud & DevOps Engineer</p>
-            </div>
+        <!-- About section -->
+        <div class="about">
+            <h2>About This Project</h2>
 
-            <div class="about">
-                <h2>About Me</h2>
-                <p>Hi, I'm <b>Prashant</b> 👋, a student and aspiring Cloud & DevOps engineer.</p>
-                <p style="margin-top:10px;">
-                    <b>Project:</b> I have deployed a 2-tier Flask application (Flask + MySQL) on AWS EC2 using Docker.  
-                    I used Docker Compose to manage both containers with volumes and a custom network.  
-                    The source code is hosted on GitHub, and Jenkins is integrated to set up a CI/CD pipeline for automated deployment.
-                </p>
-            </div>
+            <p>Hi, this is a project we built for <b>Cloud Product and Platform Engineering</b> course.</p>
 
-            <div class="messages">
-                {% for message in messages %}
-                    <p>{{ message[0] }}</p>
-                {% endfor %}
-            </div>
+            <p style="margin-top:4px;">
+                <b>Infrastructure:</b> We deployed a 2-tier Flask application (Flask + MySQL) containerised with
+                Docker and orchestrated using Docker Compose with dedicated volumes and a custom bridge network.
+                The source code is hosted on GitHub, and a <b>Jenkins CI/CD pipeline</b> automates build and
+                deployment on AWS EC2.
+            </p>
 
-            <form id="messageForm">
-                <input type="text" name="new_message" placeholder="Type your message..." required>
+            <p style="margin-top:12px;">
+                <span class="ml-badge">ML Model</span>
+                <b>Sentiment Analysis Classifier</b>
+            </p>
+            <p>
+                The application embeds a lightweight <b>Logistic Regression</b> text classifier trained with
+                <b>scikit-learn</b>. Raw text is vectorised using a
+                <b>Bag-of-Words (CountVectorizer)</b> pipeline and fed into the model to produce a binary
+                sentiment prediction — <em>Positive</em> or <em>Negative</em>.
+                The trained model is serialised with Python's <code>pickle</code> module and loaded at app
+                startup, exposing predictions via the <code>/predict</code> REST endpoint (JSON in / JSON out).
+                The model is retrained inside the Docker image at build time to guarantee sklearn version
+                consistency across all environments.
+            </p>
+        </div>
+
+        <!-- Messages feed -->
+        <p class="messages-label">Messages</p>
+        <div class="messages" id="messagesList">
+            {% for message in messages %}
+                <p>{{ message[0] }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Send message form -->
+        <form id="messageForm">
+            <div class="form-row">
+                <input type="text" name="new_message" id="new_message" placeholder="Type your message..." required>
                 <input type="submit" value="Send">
-            </form>
-        </div>
+            </div>
+        </form>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#messageForm").on("submit", function(event) {
+        $(document).ready(function () {
+            $("#messageForm").on("submit", function (event) {
                 event.preventDefault();
-                let messageInput = $("input[name='new_message']");
+                let messageInput = $("#new_message");
                 let message = messageInput.val().trim();
 
                 if (message === "") {
@@ -213,13 +282,17 @@
                     url: "/submit",
                     type: "POST",
                     data: { new_message: message },
-                    success: function(response) {
+                    success: function (response) {
                         if (response && response.message) {
-                            $(".messages").append("<p>" + response.message + "</p>");
+                            $("#messagesList").append(
+                                "<p>" + $("<div>").text(response.message).html() + "</p>"
+                            );
                             messageInput.val("");
+                            // Auto-scroll to latest message
+                            $("#messagesList").scrollTop($("#messagesList")[0].scrollHeight);
                         }
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("AJAX Error:", status, error);
                     }
                 });
@@ -227,4 +300,5 @@
         });
     </script>
 </body>
+
 </html>
