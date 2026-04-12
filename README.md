@@ -24,6 +24,8 @@
 ### **1. Project Overview**
 This document outlines the step-by-step process for deploying a 2-tier web application (Flask + MySQL) on an AWS EC2 instance. The deployment is containerized using Docker and Docker Compose. A full CI/CD pipeline is established using Jenkins to automate the build and deployment process whenever new code is pushed to a GitHub repository.
 
+The application embeds a **Sentiment Analysis Machine Learning Classifier** written in Python and trained using the `scikit-learn` framework (specifically a `LogisticRegression` model coupled with a `CountVectorizer` for Bag-of-Words text encoding). This model predicts whether a text string contains a Positive or Negative sentiment. To ensure consistent behavior and avoid module version mismatch errors, the CI/CD pipeline automatically launches an ephemeral training phase inside the Docker image during the build process, generating a fresh model specific to the deployed environment's dependencies.
+
 ---
 
 ### **2. Architecture Diagram**
@@ -302,7 +304,7 @@ The CI/CD pipeline is now fully operational. Any `git push` to the `main` branch
 
 
 ### **9. Infrastructure Diagram**
-<img src="diagrams/Infrastructure.png">
+<img src="diagrams/Cloud_Native_Architecture.jpg">
 
 
 ### **10. Work flow Diagram**
