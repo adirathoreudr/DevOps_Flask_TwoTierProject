@@ -58,8 +58,10 @@ def predict():
 
     return jsonify({
         "input": data,
-        "prediction": "Positive" if prediction == 1 else "Negative"
+        "prediction": "Positive Value" if prediction == 1 else "Negative"
     })
+    
+    
 
 if __name__ == '__main__':
     init_db()
